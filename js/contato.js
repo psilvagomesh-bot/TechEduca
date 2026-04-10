@@ -9,11 +9,11 @@ form.addEventListener("submit", async function(event){
     event.preventDefault();
 
     // 4 - Lê o que o usuário digitou em cada campo
-    const nome = document.getElementById("nome");
-    const email = document.getElementById("email");
-    const mensagem = document.getElementById("mensagem");
+    const nome = document.getElementById("nome").value; //HTMLInputElement -> valor
+    const email = document.getElementById("email").value; //HTMLInputElement -> valor
+    const mensagem = document.getElementById("mensagem").value; //HTMLTextAreaElement ->valor
 
-    // 5 - Agrupa os dados em um objeto 
+    // 5 - Agrupa os dados em um OBJETO 
     // (como uma caixinha organizadora)
     const novaMensagem = {nome,email,mensagem}
 
@@ -25,7 +25,7 @@ form.addEventListener("submit", async function(event){
             {
             method:"POST", // POST = estamos enviando os dados
             headers: {
-                "Content-Type": "aplication/json" 
+                "Content-Type": "application/json" 
                     // Avisa que o formato é JSON
             },
             body: JSON.stringify(novaMensagem)
@@ -44,7 +44,8 @@ form.addEventListener("submit", async function(event){
 
     }catch(erro){
         // 10 - Se algo deu errado, avisa o usuário
-        alert(`Erro: ${erro}`);
+        //alert(`Erro: ${erro}`);
+        console.error(erro);
     }
 
 })
